@@ -75,3 +75,14 @@ knn = KNeighborsClassifier(n_neighbors = 3)
 knn.fit(X_train, y_train)
 print("Train_Score: {}".format(knn.score(X_train, y_train)))
 print("Test_Score: {}".format(knn.score(X_test, y_test)))
+
+#observing the decision boundaries for knn
+from mlxtend.plotting import plot_decision_regions
+
+X_b = X_train[100:150,[2,5]]
+y_b = y_train[100:150]
+
+knn = KNeighborsClassifier(10)
+knn.fit(X_b, y_b) 
+
+plot_decision_regions(X_b, y_b, clf = knn)
